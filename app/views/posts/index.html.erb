@@ -1,21 +1,21 @@
 <section>
-	<h1> Lists of Posts for a specific User </h1>
-	<div>
-		<img src=<%= @author.photo %> />
-		<h2><%=@author.name%></h2>
-    	<span> <%=@author.posts_count%> </span>
-	</div>
-	<ul>
-   <%@author.posts.each do |post|%>
+  <h1> Lists of Posts for a specific User </h1>
+  <div>
+    <img src=<%=@author.photo%>/>
+    <h2><%=@author.name%></h2>
+    <span> <%=@author.posts_count%> </span>
+  </div>
+  <ul>
+   <%@posts.each do |post|%>
     <li> 
       <div>
-        <h3><%=link_to post.title, user_post_path(@author, post)%></h3>
+        <h3><%=link_to post.title, user_all_posts_path(@author, post)%></h3>
         <p><%=post.text%></p>
         <div>
           <span> <%=post.comments_count%> </span>
            <span> <%=post.likes_count%> </span>
         </div>
-        <%post.recent_comments.each do |comment|%>
+        <%post.recent_comments.includes(:author).each do |comment| %>
           <li><p> <span><%=comment.author.name %> :</span> <%=comment.text%>  </p></li>
         <%end%>
       </div>
@@ -23,4 +23,3 @@
     <%end%>
   </ul>
 </section>
-
