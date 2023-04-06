@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'home#index'
   get "/users", to: 'users#index', as: 'users'
   get '/users/:id', to: 'users#show', as: 'user'
@@ -10,3 +11,4 @@ Rails.application.routes.draw do
   get '/users/:user_id/posts/:id/comments/new', to: 'comments#new', as: 'new_comment'
   post '/users/:user_id/posts/:id/likes', to: 'likes#create', as: 'like'
 end
+ 
