@@ -74,3 +74,5 @@ Style/BlockComments:
   Enabled: False
 Style/RedundantParentheses:
   Enabled: False
+Style/FrozenStringLiteralComment:
+  Enabled: False

@@ -1,5 +1,5 @@
 <section>
-  <h1> Specific post of a user based on post id </h1>
+<h1> Specific post of a user based on post id </h1>
   <div> 
     <h3> <%=@post.title%> <span> by <%= @post.author.name%> </span></h3>
      <p> <%=@post.text%> </p>
@@ -17,6 +17,11 @@
   <ul>
   <%@post.comments.each do |comment|%>
     <li><p> <span><%=comment.author.name %> :</span> <%=comment.text%>  </p></li>
+    <% if can? :destroy, comment%>
+      <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/comments" , method: :delete do |f|%>
+        <%= f.submit 'Delete' %>
+      <%end%>
+    <%end%>
   <%end%>
   </ul>
 </section>
