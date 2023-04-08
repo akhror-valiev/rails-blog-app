@@ -42,6 +42,8 @@ gem 'jwt'
 
 gem 'simple_command'
 
+gem 'bootstrap_form', '~> 5.1'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
